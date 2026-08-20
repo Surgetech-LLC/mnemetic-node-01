@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:18.4-bookworm
+    container_name: mnemetic-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: mnemetic
+      POSTGRES_USER: mnemetic
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    ports:
+      - "127.0.0.1:5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mnemetic -d mnemetic"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  postgres_data:
