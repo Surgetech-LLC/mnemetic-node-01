@@ -50,3 +50,19 @@ Stop and remove container/network while preserving data:
 docker compose down
 
 WARNING: Do not use `docker compose down -v` unless intentionally deleting the database volume.
+
+## Backup Validation
+
+A PostgreSQL backup workflow was implemented using pg_dump.
+
+Backup process:
+
+- Executes pg_dump inside the running PostgreSQL container
+- Stores timestamped SQL backups locally
+- Keeps backup credentials outside version control
+
+Validation:
+
+- Backup script successfully created a database dump
+- Backup artifact generated:
+  mnemetic-postgres-20260820_180903.sql
