@@ -1,0 +1,21 @@
+# Secrets
+.env
+*.key
+*.pem
+id_ed25519
+id_ed25519.pub
+
+# Logs
+*.log
+
+# Local machine artifacts
+mnemetic-health-baseline.txt
+mnemetic-pcie-diagnostic.txt
+
+# Python
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
