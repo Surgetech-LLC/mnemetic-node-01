@@ -29,6 +29,24 @@ PostgreSQL:
 - Database availability
 - Backup status
 
+## Current Deployment
+
+Node exporter is deployed through:
+
+    services/monitoring/node-exporter/compose.yaml
+
+The pinned node-exporter endpoint is restricted to the local host:
+
+    http://127.0.0.1:9100/metrics
+
+Deploy or reconcile the service:
+
+    ./scripts/deploy-monitoring.sh
+
+Run the combined host and service report:
+
+    ./scripts/health-report.sh
+
 ## Baseline (2026-08-20)
 
 Memory:
@@ -52,6 +70,4 @@ Potential additions:
 
 - Prometheus
 - Grafana
-- Node exporter
 - Automated alerts
-

@@ -18,6 +18,18 @@ First SURGETECH/Mnemetic infrastructure node.
 - Codex environment
 - Git
 - System diagnostics
+- Docker Compose services for PostgreSQL and node exporter
+- Repeatable health, backup, and monitoring deployment operations
+
+## Operations
+
+The operations toolkit is documented in [docs/operations.md](docs/operations.md).
+
+Primary commands:
+
+    ./scripts/health-report.sh
+    ./scripts/backup-postgres.sh
+    ./scripts/deploy-monitoring.sh
 
 ## Roadmap
 
@@ -26,4 +38,3 @@ First SURGETECH/Mnemetic infrastructure node.
 - Docker services
 - Infrastructure automation
 - Mnemetic experiments
-

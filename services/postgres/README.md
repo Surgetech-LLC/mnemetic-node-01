@@ -66,3 +66,34 @@ Validation:
 - Backup script successfully created a database dump
 - Backup artifact generated:
   mnemetic-postgres-20260820_180903.sql
+
+## Backup Operation
+
+From the repository root, use the operations-toolkit wrapper:
+
+    ./scripts/backup-postgres.sh
+
+The service-local entry point remains available:
+
+    ./services/postgres/backup/backup-postgres.sh
+
+Both commands use the same implementation. It:
+
+- validates the Compose configuration
+- confirms that the PostgreSQL service is running
+- checks database readiness with pg_isready
+- writes pg_dump output to an owner-only temporary file
+- publishes the final SQL file only after a successful, nonempty dump
+- refuses to overwrite an existing backup
+- cleans up its own incomplete temporary file after failure or interruption
+
+Generated archives remain under:
+
+    services/postgres/backup/archives/
+
+The archive directory is ignored by Git. The script does not automatically
+delete or rotate backups.
+
+See [../../docs/operations.md](../../docs/operations.md) for the complete
+toolkit guide and [recovery-test.md](recovery-test.md) for the validated restore
+procedure.
